@@ -1,42 +1,22 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
-import firebase from "firebase";
-import { CreateUsersController } from "./modules/users/controllers/CreateUsersController";
-
+import { UsersController } from "./modules/users/controllers/UsersController";
 
 const app = express()
 
 app.use(express.json())
 app.use(cors())
 
-const createUsersController = new CreateUsersController()
+const usersController = new UsersController()
 
-app.post('/', createUsersController.create)
+app.post('/', usersController.create)
 
-// app.get('/', async (request: Request, response: Response) => {
-//     const data = await Users.get();
-//     const users = data.docs.map(user => ({ id: user.id, ...user.data()}))
-//     response.send(users)
-// })
+app.get('/', usersController.listAll)
 
-// app.get('/:id', async (request: Request, response: Response) => {
-//     const { id } = request.params
-//     const data = await Users.get();
-//     const users = data.docs.map(user => ({ id: user.id, ...user.data()}))
-//     const user = users.filter(user => { return user.id == id})
-//     response.send(user)
-// })
+app.get('/:id', usersController.listOne)
 
-// app.put('/:id', async (request: Request, response: Response) => {
-//     const { id } = request.params
-//     await Users.doc(id).update(request.body)
-//     response.send({ msg: "Usuario alterado com sucesso"})
-// })
+app.put('/:id', usersController.upadate)
 
-// app.delete('/:id', async (request: Request, response: Response) => {
-//     const { id } = request.params
-//     await Users.doc(id).delete();
-//     response.send({ msg: "Usuario removido com sucesso"})
-// })
+app.delete('/:id', usersController.delete)
 
 app.listen(3000, () => { console.log("Server is running")})
