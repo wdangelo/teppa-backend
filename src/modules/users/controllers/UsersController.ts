@@ -45,6 +45,17 @@ class UsersController {
 
     }
 
+    async findByEmail(request: Request, response: Response) {
+        const { email } = request.params
+        const user = database.collection("users");
+        const data = await user.get();
+        const users = data.docs.map(item => ({id: item.id, ...item.data()}));
+        const searchUser = users.filter(item => { return item['email'] == email})
+        console.log(searchUser)
+        response.status(200).send(searchUser)
+
+    }
+
     async delete(request: Request, response: Response) {
         const { id } = request.params
         const user = database.collection("users");

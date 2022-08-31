@@ -18,12 +18,26 @@ const firebaseConfig = {
   class User {
 
     async create({name, email, password}: ICreateUserDTO) {
-        const user = database.collection("users");
-        await user.add({
-            name,
-            email,
-            password
-        });
+
+
+        const user = database.collection("users")
+
+        const data = await user.get()
+
+        const users = data.docs.map(item => ({id: item.id, ...item.data()}));
+        const searchUser = users.filter(item => { return item['email'] == email})
+
+        if(searchUser) {
+          console.log("usuário existente")
+          console.log(searchUser)
+        } else {
+            await user.add({
+              name,
+              email,
+              password
+            });
+        }
+
     }
     
   }

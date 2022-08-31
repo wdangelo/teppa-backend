@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import { UsersController } from "./modules/users/controllers/UsersController";
 
@@ -15,8 +15,11 @@ app.get('/', usersController.listAll)
 
 app.get('/:id', usersController.listOne)
 
+app.get('/users/:email', usersController.findByEmail)
+
 app.put('/:id', usersController.upadate)
 
 app.delete('/:id', usersController.delete)
 
-app.listen(3000, () => { console.log("Server is running")})
+
+app.listen(3333, () => { console.log("Server is running")})
