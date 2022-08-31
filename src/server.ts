@@ -9,9 +9,9 @@ app.use(cors())
 
 const usersController = new UsersController()
 
-app.post('/', usersController.create)
+app.post('/users', usersController.create)
 
-app.get('/', usersController.listAll)
+app.get('/users', usersController.listAll)
 
 app.get('/:id', usersController.listOne)
 

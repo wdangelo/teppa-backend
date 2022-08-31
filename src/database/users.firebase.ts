@@ -27,16 +27,15 @@ const firebaseConfig = {
         const users = data.docs.map(item => ({id: item.id, ...item.data()}));
         const searchUser = users.filter(item => { return item['email'] == email})
 
-        if(searchUser) {
-          console.log("usuário existente")
-          console.log(searchUser)
-        } else {
-            await user.add({
-              name,
-              email,
-              password
-            });
-        }
+        if(searchUser.length > 0) {
+          throw new Error("User already exists")
+        } 
+
+        await user.add({
+          name,
+          email,
+          password
+        });
 
     }
     
