@@ -2,8 +2,10 @@
 backend desafio full-stack
 
 
-[ ] não pode ter 2 cadastro com o mesmo e-mail
+[ x ] não pode ter 2 cadastro com o mesmo e-mail
 
 [ ] não pode cadastrar campos vazios
 
-[ ] fazer rota que busca por e-mail 
+[ x ] fazer rota que busca por e-mail 
+
+[ ] colocar hash para password de usuário
