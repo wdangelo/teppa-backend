@@ -1,6 +1,8 @@
 import firebase  from "firebase";
 import { ICreateUserDTO } from "../modules/users/dto/ICreateUserDTO";
 
+import { hash } from "bcrypt"
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDW4ycrQvOWB97AwJZtXp0tx0VDa0kMvLk",
@@ -31,10 +33,12 @@ const firebaseConfig = {
           throw new Error("User already exists")
         } 
 
+        const passwordHash = await hash(password, 8)
+
         await user.add({
           name,
           email,
-          password
+          password: passwordHash
         });
 
     }
