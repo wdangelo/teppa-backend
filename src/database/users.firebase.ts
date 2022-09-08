@@ -17,9 +17,12 @@ const firebaseConfig = {
 
   const database = firebase.firestore();
 
-  class User {
+  class UserRepository {
 
-    async create({name, email, password}: ICreateUserDTO) {
+    async create({
+      name,
+      email,
+      password}: ICreateUserDTO) {
 
 
         const user = database.collection("users")
@@ -47,7 +50,7 @@ const firebaseConfig = {
 
 
 
-  export {User, database}
+  export {UserRepository, database}
 
 
 

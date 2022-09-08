@@ -1,20 +1,26 @@
 import { Request, Response } from "express";
-import { User, database } from "../../../database/users.firebase";
+import {  database, UserRepository } from "../../../database/users.firebase";
+import { User } from "../infra/entities/User";
+
+const usersRepository = new UserRepository();
 
 
-const usersRepository = new User();
+const user = new User()
 
 class UsersController {
     
-
     async create(request: Request, response: Response): Promise<void> {
         const { name, email, password } = request.body;
 
-        await usersRepository.create({name, email, password})
+        user.name = name;
+        user.email = email;
+        user.password = password;
 
-
-        //await addDoc(Users, {name, email, password})
-
+        if(!name || !email || !password) {
+            throw new Error("name, email and password must not be empty")
+        }
+        
+        await usersRepository.create(user)
         response.status(201).send({ message: "user created successfully"})
     }
 

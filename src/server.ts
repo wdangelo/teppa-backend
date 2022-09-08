@@ -15,13 +15,13 @@ app.post('/users', usersController.create)
 
 app.get('/users', usersController.listAll)
 
-app.get('/:id', usersController.listOne)
+app.get('/users/:id', usersController.listOne)
 
 app.get('/users/:email', usersController.findByEmail)
 
-app.put('/:id', usersController.upadate)
+app.put('/users/:id', usersController.upadate)
 
-app.delete('/:id', usersController.delete)
+app.delete('/users/:id', usersController.delete)
 
 app.post('/session', authenticateController.handle)
 
