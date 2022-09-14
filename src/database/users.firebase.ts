@@ -2,6 +2,7 @@ import firebase  from "firebase";
 import { ICreateUserDTO } from "../modules/users/dto/ICreateUserDTO";
 
 import { hash } from "bcrypt"
+import { AppError } from "../shared/errors/AppError";
 
 
 const firebaseConfig = {
@@ -33,7 +34,7 @@ const firebaseConfig = {
         const searchUser = users.filter(item => { return item['email'] == email})
 
         if(searchUser.length > 0) {
-          throw new Error("User already exists")
+          throw new AppError("User already exists", 401)
         } 
 
         const passwordHash = await hash(password, 8)

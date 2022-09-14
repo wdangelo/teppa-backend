@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import {  database, UserRepository } from "../../../database/users.firebase";
+import { AppError } from "../../../shared/errors/AppError";
 import { User } from "../infra/entities/User";
 
 const usersRepository = new UserRepository();
-
 
 const user = new User()
 
@@ -18,6 +18,7 @@ class UsersController {
 
         if(!name || !email || !password) {
             throw new Error("name, email and password must not be empty")
+            
         }
         
         await usersRepository.create(user)
