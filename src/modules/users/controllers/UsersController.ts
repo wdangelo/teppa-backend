@@ -17,7 +17,7 @@ class UsersController {
         user.password = password;
 
         if(!name || !email || !password) {
-            throw new Error("name, email and password must not be empty")
+            throw new AppError("name, email and password must not be empty")
             
         }
         

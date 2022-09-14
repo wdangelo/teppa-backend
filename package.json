@@ -6,7 +6,8 @@
   "author": "William de Angelo <wdangelo1983@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts"
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "start": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
