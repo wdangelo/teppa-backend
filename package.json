@@ -1,12 +1,14 @@
 {
   "name": "teppa-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/wdangelo/teppa-backend.git",
   "author": "William de Angelo <wdangelo1983@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "build": "tsc",
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
