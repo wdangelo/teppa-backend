@@ -16,6 +16,8 @@ app.use(cors())
 const usersController = new UsersController();
 const authenticateController = new AuthenticateController();
 
+const port = process.env.PORT || 3333;
+
 app.post('/users', authenticated, usersController.create)
 
 app.get('/users', usersController.listAll)
@@ -46,4 +48,4 @@ app.use(
 )
 
 
-app.listen(3333, () => { console.log("Server is running")})
+app.listen(port, () => { console.log("Server is running")})
