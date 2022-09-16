@@ -1,11 +1,14 @@
-# teppa-backend
-backend desafio full-stack
+# Este projeto foi desenvolvo para um teste de Fullstack
 
-
-[ x ] não pode ter 2 cadastro com o mesmo e-mail
-
-[ ] não pode cadastrar campos vazios
-
-[ x ] fazer rota que busca por e-mail 
-
-[ ] colocar hash para password de usuário
+## Cógigo escrito com:
+  - nodejs
+  - typescript
+  - firebase
+  - framework express
+  
+  
+  ### o link para esta API foi feito o deploy no Heroku
+  
+    https://backend-teppa.herokuapp.com/users
+  
+  
